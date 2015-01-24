@@ -68,7 +68,15 @@ function insignia (el, o) {
     tags: tags,
     value: value,
     convert: convert,
-    destroy: destroy
+    destroy: destroy,
+    /**
+     * Creates a new tag and returns the element associated.
+     */
+    addTag: function (value) {
+      var el = createTag(before, value);
+      evaluate([delimiter], true);
+      return el;
+    }
   };
   var entry = { el: el, api: api };
 
@@ -234,6 +242,7 @@ function insignia (el, o) {
       el.appendChild(dom('span', 'nsg-tag-remove'));
     }
     buffer.appendChild(el);
+    return el;
   }
 
   function focusTag (tag, p) {
